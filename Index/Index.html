@@ -1,49 +1,133 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="App">
+<html>
 <head>
-  <title>Dashboard</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="1000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="angular.min.js"></script>
-<script src="angular-route.js"></script>
-
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+ <script src="angular-route.js"></script>
   <script src="app.js"></script>
+
+<script>
+function hell()
+{
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+
+        var x=(JSON.stringify($('form').serializeObject()));
+       $('#result').text(JSON.stringify($('form').serializeObject()));
+alert('Data Saved');
+  var obj = {};
+
+//do some processing here which adds some properties to obj like
+var person = {
+            name: "rahul", age : "8"            
+             }
+obj.name = 'x';
+obj.id = 4;
+var dataString = 'name1='+ "Rahul" + '&email1='+ "rahul.5515@gmail.com" + '&password1='+ "123" + '&contact1='+ "2222222";
+
+$.ajax({
+    url: 'json.php',
+    data: {json : x},
+    dataType:'json' ,
+type: "POST",
+success:function(data)
+{
+alert('hello');
+}
+});
+}
+
+</script>
 </head>
 <body ng-app="App" ng-controller="TodoCtrl">
 
-<div class="container" >
-  <div class="jumbotron">
-    <h1>Dashboard</h1>
-    <p>Bug logging tool,RBC captial market</p> 
+
+<div class="container">
+<div  style="color:#094AB2">
+    <h1>Commercial Dashboard BI</h1>
+    <p style="margin-top:-4px">RBC Captail Market</p> 
   </div>
+<div class="row">
+<div class="col-sm-2" style="background-color:#f6f6f6;height:500px">
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        
+    </tr>
+    <tr ng-repeat="todo in todos">
+        <td>{{todo.Fname}}</td>
+        <td>{{todo.Lname}}</td>
+        
+    </tr>
+</table>
 <div>
 
 <ul class="nav">
 
-			<li><a href="#Details"> Add New Item </a></li>	
-			<li><a href="#ShowOrders"> Show</a></li>
+			<li><a href="#Add"> Add New Item </a></li>	
+			<li><a href="#Show"> Show</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-10">
+  <div ng-view></div>   
+
 </div>
   <div class="row">
     <div class="col-sm-4">
-      <h3>Summary</h3>
-       <table class="table table-striped">
-    <tr ng-repeat="todo in todos">
-      <td>{{todo.text}}</td>
-      <td>{{todo.done}}</td>      
-    </tr>
-    
-  </table>
+
     </div>
     <div class="col-sm-8">
-      <h3>Details</h3>  
-<div ng-view></div>    
-	
+      
+<form action="" method="post" >
+First Name:<input type="text" name="Fname" maxlength="12" size="12"/> <br/>
+Last Name:<input type="text" name="Lname" maxlength="36" size="12"/> <br/>
+Gender:<br/>
+Male:<input type="radio" name="gender" value="Male"/><br/>
+Female:<input type="radio" name="gender" value="Female"/><br/>
+
+<textarea wrap="physical" cols="20" name="quote" rows="5">Enter your favorite quote!</textarea><br/>
+Select a Level of Priority:<br/>
+<select name="Priority">
+<option value="High">High</option>
+<option value="Medium">Medium</option>
+<option value="Low">Low</option></select><br/>
+Select Priority:<br/>
+<select size="3" name="TofD">
+<option value="High">High</option>
+<option value="Medium">Medium</option>
+<option value="Low">Low</option></select>
+
+</form>
+
+<pre id="result">
+</pre>
+<button type="button" class="btn btn-primary" onclick="hell()">Primary</button>
+   
+</div>
     </div>
     
   </div>
