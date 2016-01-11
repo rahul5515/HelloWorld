@@ -1,30 +1,32 @@
-var App = angular.module('App', ['ngRoute']);
+var App = angular.module('App', []);
 
 App.controller('TodoCtrl', function($scope, $http) {
   $http.get('todos.json')
        .then(function(res){
-          $scope.todos = res.data;                
+          $scope.todos = res.data;   
+            
         });
 });
 
  App.config(['$routeProvider', function($routeProvider)
  {  
   $routeProvider.     
-when('/Details', 
+when('/Add', 
 {	
-templateUrl: 'Details.html',	
-controller: 'DetailsrController'
+templateUrl: 'Add.html',	
+controller: 'AddController'
       }).     
-when('/Index', {
-	templateUrl: 'Index.html',	
+when('/Show', {
+	templateUrl: 'Dashboard.html',	
 controller: 'ShowOrdersController'
       })
+.otherwise({
+        redirectTo: ''
+      });
 }]);
 
-App.controller('DetailsrController', function($scope) {
+App.controller('AddController', function($scope) {
 	
 	$scope.name = "Rahul";
 	
 });
-
-
