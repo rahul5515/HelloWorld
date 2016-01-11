@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="1000">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+
+
+
+  <script src="app.js"></script>
+</head>
+<body ng-app="App" ng-controller="TodoCtrl">
+
+<div class="container" >
+  <div class="jumbotron">
+    <h1>Dashboard</h1>
+    <p>Bug logging tool,RBC captial market</p> 
+  </div>
+<div>
+
+<ul class="nav">
+
+			<li><a href="#Details"> Add New Item </a></li>	
+			<li><a href="#ShowOrders"> Show</a></li>
+</div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Summary</h3>
+       <table class="table table-striped">
+    <tr ng-repeat="todo in todos">
+      <td>{{todo.text}}</td>
+      <td>{{todo.done}}</td>      
+    </tr>
+    
+  </table>
+    </div>
+    <div class="col-sm-8">
+      <h3>Details</h3>  
+<div ng-view></div>    
+	
+    </div>
+    
+  </div>
+</div>
+
+</body>
+</html>
