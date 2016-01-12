@@ -1,0 +1,41 @@
+<div style="background-color:#094AB2;font-family: 'Segoe UI';font-size: 18px;color:white">
+<p style="padding:3px">Overall - Statistics </p> 
+</div>
+
+<p style="margin-top:-3px">
+
+<div style="background-color:#f6f6f6" ng-app="App" ng-controller="DashboardHKController">
+
+<table class="table" >
+    <thead>
+      <tr>
+        <th>UAO Transaction</th>
+        <th>Derivative Transaction</th>
+<th>Bond Ballot</th>
+<th>Client Alias</th>
+      </tr>
+    </thead>
+    <tbody> 
+<tr  ng-repeat="m in todos | limitTo:-1">
+ <td><div ng-class="{'red':m.UAO=='Red','green':m.UAO=='Green','amber':m.UAO=='Amber'}">
+
+{{m.UAO}}</div></td> 
+ <td><div ng-
+
+class="{'red':m.Derivative=='Red','green':m.Derivative=='Green','amber':m.Derivative=='Ambe
+
+r'}">{{m.Derivative}}</div></td> 
+ <td><div ng-
+
+class="{'red':m.Client=='Red','green':m.Client=='Green','amber':m.Client=='Amber'}">
+
+{{m.Client}}</div>
+
+</div>
+</td>   
+</tr>      
+    </tbody>
+  </table>
+
+</div>
+</div>
